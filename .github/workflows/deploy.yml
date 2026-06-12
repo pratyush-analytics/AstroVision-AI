@@ -1,0 +1,92 @@
+name: CI/CD — AstroVision AI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    name: Validate & Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Validate HTML structure
+        run: |
+          echo "Checking HTML files..."
+          for f in *.html; do
+            echo "  Checking $f..."
+            grep -q '<!DOCTYPE html>' "$f" && echo "  ✅ $f has DOCTYPE" || echo "  ⚠️ $f missing DOCTYPE"
+            grep -q '<meta charset' "$f" && echo "  ✅ $f has charset" || echo "  ⚠️ $f missing charset"
+            grep -q '<meta name="viewport"' "$f" && echo "  ✅ $f has viewport" || echo "  ⚠️ $f missing viewport"
+          done
+
+      - name: Check for hardcoded secrets
+        run: |
+          echo "Scanning for potential secrets..."
+          # Check for common patterns — fail if found
+          if grep -r "sk-[a-zA-Z0-9]" --include="*.js" --include="*.html" .; then
+            echo "❌ OpenAI key pattern found!"
+            exit 1
+          fi
+          if grep -r "AIza[a-zA-Z0-9]" --include="*.js" --include="*.html" .; then
+            echo "❌ Google API key pattern found!"
+            exit 1
+          fi
+          echo "✅ No hardcoded secrets detected"
+
+      - name: Verify file structure
+        run: |
+          echo "Verifying required files..."
+          required=("index.html" "style.css" "app.js" "jyotika.html" "jyotika.css" "jyotika.js" "README.md" "LICENSE" ".gitignore")
+          for f in "${required[@]}"; do
+            if [ -f "$f" ]; then
+              echo "  ✅ $f exists"
+            else
+              echo "  ❌ $f MISSING"
+              exit 1
+            fi
+          done
+
+      - name: Check file sizes (performance budget)
+        run: |
+          echo "Checking file sizes..."
+          check_size() {
+            size=$(wc -c < "$1")
+            limit=$2
+            if [ "$size" -gt "$limit" ]; then
+              echo "  ⚠️ $1 is ${size}B (limit: ${limit}B)"
+            else
+              echo "  ✅ $1 is ${size}B"
+            fi
+          }
+          check_size "app.js" 100000        # 100KB limit
+          check_size "jyotika.js" 150000    # 150KB limit
+          check_size "style.css" 50000      # 50KB limit
+          check_size "jyotika.css" 30000    # 30KB limit
+
+  deploy-preview:
+    name: Deploy Preview
+    runs-on: ubuntu-latest
+    needs: validate
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to Netlify Preview
+        run: echo "Deploy preview to Netlify (configure with NETLIFY_AUTH_TOKEN secret)"
+
+  deploy-production:
+    name: Deploy Production
+    runs-on: ubuntu-latest
+    needs: validate
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to production
+        run: echo "Deploy to Netlify production (configure with NETLIFY_AUTH_TOKEN and NETLIFY_SITE_ID secrets)"

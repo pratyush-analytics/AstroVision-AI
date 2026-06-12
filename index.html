@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>AstroVision AI – Your Cosmic Destiny | AI Astrology Platform</title>
+<meta name="description" content="AI-powered Vedic and Western astrology. Get personalized birth charts, daily horoscopes, compatibility analysis, tarot readings, and future predictions. Free online astrology."/>
+<meta name="keywords" content="astrology, birth chart, horoscope, vedic astrology, western astrology, tarot, numerology, AI astrology, zodiac, jyotish"/>
+<meta name="author" content="AstroVision AI"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://astrovision-ai.netlify.app/"/>
+<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://astrovision-ai.netlify.app/"/>
+<meta property="og:title" content="AstroVision AI – Unlock Your Cosmic Destiny"/>
+<meta property="og:description" content="AI-powered astrology: birth charts, daily horoscopes, compatibility, tarot, and future predictions. Ancient wisdom meets artificial intelligence."/>
+<meta property="og:image" content="https://astrovision-ai.netlify.app/public/og-image.png"/>
+<meta property="og:site_name" content="AstroVision AI"/>
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="AstroVision AI – Your Cosmic Destiny"/>
+<meta name="twitter:description" content="AI-powered astrology platform. Free birth charts, horoscopes, compatibility & tarot."/>
+<meta name="twitter:image" content="https://astrovision-ai.netlify.app/public/og-image.png"/>
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="public/favicon.svg"/>
+<!-- Preconnect for Google Fonts performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<canvas id="stars"></canvas>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <div class="logo">✦ AstroVision <span>AI</span></div>
+    <ul>
+      <li><a href="#horoscope">Horoscope</a></li>
+      <li><a href="#birthchart">Birth Chart</a></li>
+      <li><a href="#compatibility">Compatibility</a></li>
+      <li><a href="#predictions">Predictions</a></li>
+      <li><a href="#tarot">Tarot</a></li>
+    </ul>
+    <button class="btn-primary" onclick="scrollTo('#birthchart')">Get Started ✦</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+  <div class="hero-text">
+    <div class="badge">✦ AI-Powered Astrology Platform</div>
+    <h1>Unlock Your<br/><span class="g-text">Cosmic Destiny</span></h1>
+    <p>Harness ancient star wisdom with modern AI. Get personalized birth charts, daily horoscopes, and future event predictions crafted uniquely for your cosmic blueprint.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('birthchart').scrollIntoView({behavior:'smooth'})">Reveal My Chart ✦</button>
+      <button class="btn-ghost" onclick="document.getElementById('horoscope').scrollIntoView({behavior:'smooth'})">Daily Horoscope</button>
+    </div>
+    <div class="stats">
+      <div><strong>2.4M+</strong><span>Readings</span></div>
+      <div><strong>98%</strong><span>Accuracy</span></div>
+      <div><strong>150+</strong><span>Countries</span></div>
+    </div>
+  </div>
+  <div class="hero-chart" id="heroChart">
+    <div class="ring r1"><div class="zodiac-ring" id="zodiacRingAnim"></div></div>
+    <div class="ring r2"></div>
+    <div class="ring r3"></div>
+    <div class="ring-center"><span>☽</span></div>
+  </div>
+</section>
+
+<!-- HOROSCOPE -->
+<section id="horoscope" class="section">
+  <div class="s-header">
+    <div class="badge">Daily Horoscope</div>
+    <h2>What Do the Stars Say <span class="g-text">Today?</span></h2>
+    <p>Select your zodiac sign for your AI-powered daily reading</p>
+  </div>
+  <div class="zodiac-grid" id="zodiacGrid"></div>
+  <div class="horo-panel" id="horoPanel" style="display:none">
+    <div class="horo-top">
+      <div class="horo-icon" id="horoIcon"></div>
+      <div><h3 id="horoName"></h3><p id="horoDates"></p></div>
+      <button class="close-btn" id="horoClose">✕</button>
+    </div>
+    <div class="tab-row">
+      <button class="tab active" data-tab="today">Today</button>
+      <button class="tab" data-tab="week">This Week</button>
+      <button class="tab" data-tab="month">Month</button>
+      <button class="tab" data-tab="year">Year 2026</button>
+    </div>
+    <div id="horoContent">
+      <div class="typing" id="horoTyping"><span></span><span></span><span></span> AI Reading your cosmic blueprint...</div>
+      <div id="horoResult" style="display:none">
+        <p id="horoText" class="horo-reading"></p>
+        <div class="bars">
+          <div class="bar-row"><label>Love</label><div class="bar"><div class="fill" id="bLove"></div></div><span id="sLove"></span></div>
+          <div class="bar-row"><label>Career</label><div class="bar"><div class="fill" id="bCareer"></div></div><span id="sCareer"></span></div>
+          <div class="bar-row"><label>Health</label><div class="bar"><div class="fill" id="bHealth"></div></div><span id="sHealth"></span></div>
+          <div class="bar-row"><label>Luck</label><div class="bar"><div class="fill" id="bLuck"></div></div><span id="sLuck"></span></div>
+        </div>
+        <div class="lucky-row">
+          <div class="lucky-box"><div class="lucky-icon">🎨</div><small>Lucky Color</small><strong id="lColor"></strong></div>
+          <div class="lucky-box"><div class="lucky-icon">🔢</div><small>Lucky Number</small><strong id="lNum"></strong></div>
+          <div class="lucky-box"><div class="lucky-icon">💎</div><small>Power Stone</small><strong id="lStone"></strong></div>
+          <div class="lucky-box"><div class="lucky-icon">♾️</div><small>Best Match</small><strong id="lMatch"></strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIRTH CHART -->
+<section id="birthchart" class="section alt-bg">
+  <div class="s-header">
+    <div class="badge">Natal Chart Generator</div>
+    <h2>Generate Your <span class="g-text">Birth Chart</span></h2>
+    <p>Enter your birth details for a comprehensive AI analysis</p>
+  </div>
+  <div class="two-col" id="chartArea">
+    <div class="card form-card" id="chartForm">
+      <h3>Your Birth Details</h3>
+      <div class="fg"><label>Full Name</label><input id="cName" placeholder="Enter your name"/></div>
+      <div class="fg"><label>Date of Birth</label><input type="date" id="cDate"/></div>
+      <div class="fg"><label>Time of Birth</label><input type="time" id="cTime"/></div>
+      <div class="fg"><label>Place of Birth</label><input id="cPlace" placeholder="City, Country"/></div>
+      <div class="fg"><label>Chart System</label>
+        <select id="cSystem">
+          <option value="western">Western (Tropical)</option>
+          <option value="vedic">Vedic (Sidereal)</option>
+        </select>
+      </div>
+      <button class="btn-primary w100" id="genChartBtn">✦ Generate Birth Chart</button>
+    </div>
+    <div class="card chart-result" id="chartResult" style="display:none">
+      <button class="back-btn" id="chartBack">← Back</button>
+      <h3 id="chartName" class="chart-person"></h3>
+      <div class="chart-badges" id="chartBadges"></div>
+      <canvas id="chartCanvas" width="300" height="300"></canvas>
+      <div id="chartPlanets" class="planet-list"></div>
+      <div id="chartSummary" class="chart-summary-box"></div>
+      <button class="btn-primary w100" onclick="document.getElementById('predictions').scrollIntoView({behavior:'smooth'})">Get AI Predictions ✦</button>
+    </div>
+  </div>
+</section>
+
+<!-- COMPATIBILITY -->
+<section id="compatibility" class="section">
+  <div class="s-header">
+    <div class="badge">Synastry Analysis</div>
+    <h2>Check Your <span class="g-text">Compatibility</span></h2>
+    <p>Discover the cosmic connection between two souls</p>
+  </div>
+  <div class="compat-wrap">
+    <div class="compat-persons">
+      <div class="card compat-card">
+        <h4>Person 1</h4>
+        <div class="fg"><label>Name</label><input id="c1name" placeholder="Your name"/></div>
+        <div class="fg"><label>Zodiac Sign</label><select id="c1sign"><option value="">Select</option></select></div>
+        <div class="fg"><label>Date of Birth</label><input type="date" id="c1dob"/></div>
+      </div>
+      <div class="vs-divider"><div class="heart-icon">♥</div><span>vs</span></div>
+      <div class="card compat-card">
+        <h4>Person 2</h4>
+        <div class="fg"><label>Name</label><input id="c2name" placeholder="Partner's name"/></div>
+        <div class="fg"><label>Zodiac Sign</label><select id="c2sign"><option value="">Select</option></select></div>
+        <div class="fg"><label>Date of Birth</label><input type="date" id="c2dob"/></div>
+      </div>
+    </div>
+    <button class="btn-primary" id="compatBtn">✦ Analyze Compatibility</button>
+    <div class="compat-result" id="compatResult" style="display:none">
+      <div class="compat-ring-wrap">
+        <canvas id="compatCanvas" width="180" height="180"></canvas>
+        <div class="compat-label"><span id="compatPct" class="compat-pct">0%</span><small>Match</small></div>
+      </div>
+      <div id="compatDetails" class="compat-details"></div>
+    </div>
+  </div>
+</section>
+
+<!-- AI PREDICTIONS -->
+<section id="predictions" class="section alt-bg">
+  <div class="s-header">
+    <div class="badge">Future Forecast</div>
+    <h2>AI-Powered <span class="g-text">Life Predictions</span></h2>
+    <p>Our quantum astrology AI analyzes planetary transits to forecast your upcoming life events</p>
+  </div>
+  <div class="two-col">
+    <div class="card form-card">
+      <h3>Your Personalized Prediction</h3>
+      <div class="fg"><label>Full Name</label><input id="pName" placeholder="Your name"/></div>
+      <div class="fg"><label>Date of Birth</label><input type="date" id="pDob"/></div>
+      <div class="fg"><label>Life Area</label>
+        <select id="pArea">
+          <option value="career">Career & Finance</option>
+          <option value="love">Love & Relationships</option>
+          <option value="health">Health & Wellness</option>
+          <option value="education">Education & Growth</option>
+          <option value="spiritual">Spiritual Journey</option>
+          <option value="general">General Life</option>
+        </select>
+      </div>
+      <div class="fg"><label>Prediction Period</label>
+        <select id="pPeriod">
+          <option value="3m">Next 3 Months</option>
+          <option value="6m">Next 6 Months</option>
+          <option value="1y">Next 1 Year</option>
+          <option value="5y">Next 5 Years</option>
+        </select>
+      </div>
+      <div class="fg"><label>Your Zodiac Sign</label><select id="pSign"><option value="">Select sign</option></select></div>
+      <div class="fg"><label>Your Question (optional)</label><input id="pQ" placeholder="Ask the stars anything..."/></div>
+      <button class="btn-primary w100" id="predBtn">✦ Reveal My Future</button>
+    </div>
+    <div class="card pred-result" id="predResult" style="display:none">
+      <div class="pred-head">
+        <div class="pred-ai">🔮</div>
+        <div><h4 id="predTitle"></h4><small>AI Cosmic Analysis Complete</small></div>
+      </div>
+      <div id="predTimeline" class="pred-timeline"></div>
+      <div id="predAdvice" class="pred-advice"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TAROT -->
+<section id="tarot" class="section">
+  <div class="s-header">
+    <div class="badge">Tarot Reading</div>
+    <h2>Draw Your <span class="g-text">Tarot Cards</span></h2>
+    <p>Let the cards reveal what the universe has in store for you</p>
+  </div>
+  <div class="tarot-wrap">
+    <div class="tarot-input">
+      <input id="tarotQ" placeholder="Focus on your question, then draw your cards..."/>
+      <button class="btn-primary" id="tarotBtn">Draw 3 Cards</button>
+    </div>
+    <div class="card-deck" id="cardDeck"></div>
+    <div id="tarotResult" class="tarot-result" style="display:none">
+      <div id="tarotCards" class="tarot-cards-row"></div>
+      <div id="tarotReading" class="tarot-reading-text"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="section alt-bg">
+  <div class="s-header">
+    <div class="badge">Platform Features</div>
+    <h2>Everything You Need to <span class="g-text">Know Your Future</span></h2>
+  </div>
+  <div class="features-grid">
+    <div class="feat-card large"><div class="feat-icon">🌌</div><h3>AI Birth Chart Analysis</h3><p>Advanced AI analyzes natal chart, planetary positions, houses, and aspects for profound insights about your personality and life path.</p></div>
+    <div class="feat-card"><div class="feat-icon">🔮</div><h3>Future Event Predictions</h3><p>Accurate predictions for major life events using transit analysis and AI forecasting models.</p></div>
+    <div class="feat-card"><div class="feat-icon">💕</div><h3>Compatibility Matching</h3><p>Deep synastry analysis reveals relationship dynamics and compatibility scores.</p></div>
+    <div class="feat-card"><div class="feat-icon">🃏</div><h3>AI Tarot Readings</h3><p>Personalized tarot aligned with your current planetary transits.</p></div>
+    <div class="feat-card"><div class="feat-icon">📅</div><h3>Muhurat Calendar</h3><p>Find auspicious timings for important events with our Vedic muhurat calculator.</p></div>
+    <div class="feat-card large"><div class="feat-icon">🧘</div><h3>Spiritual Guidance & Remedies</h3><p>Receive personalized spiritual remedies, gemstone recommendations, mantra suggestions, and meditation practices based on your birth chart.</p></div>
+    <div class="feat-card"><div class="feat-icon">✋</div><h3>Palmistry Analysis</h3><p>AI-powered palmistry cross-referenced with your birth chart for holistic insight.</p></div>
+    <div class="feat-card"><div class="feat-icon">🌙</div><h3>Moon Phase Tracker</h3><p>Track lunar phases and their impact on your sign's energy and emotions daily.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section">
+  <div class="s-header">
+    <div class="badge">User Stories</div>
+    <h2>What the Stars <span class="g-text">Revealed for Them</span></h2>
+  </div>
+  <div class="testi-track" id="testiTrack"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">✦ AstroVision <span>AI</span></div>
+      <p>Cosmic wisdom meets artificial intelligence. Unlock your destiny with the most advanced AI astrology platform.</p>
+    </div>
+    <div class="footer-links">
+      <div><h5>Features</h5><a href="#horoscope">Daily Horoscope</a><a href="#birthchart">Birth Chart</a><a href="#compatibility">Compatibility</a><a href="#predictions">AI Predictions</a><a href="#tarot">Tarot</a></div>
+      <div><h5>Astrology</h5><a href="#">Western</a><a href="#">Vedic</a><a href="#">Chinese</a><a href="#">Numerology</a><a href="#">Palmistry</a></div>
+      <div><h5>Company</h5><a href="#">About Us</a><a href="#">Our Astrologers</a><a href="#">Blog</a><a href="#">Privacy Policy</a><a href="#">Terms</a></div>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 AstroVision AI. All Rights Reserved. Made with ✦ and cosmic energy.</div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>

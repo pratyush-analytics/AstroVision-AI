@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Jyotika AI – Master Teacher of Vedic Astrology & Esoteric Arts | AstroVision</title>
+<meta name="description" content="Chat with Jyotika, your personal AI master teacher of Vedic Astrology, Hellenistic Astrology, Numerology, Tarot, I Ching and Palmistry. Free interactive AI learning."/>
+<meta name="keywords" content="vedic astrology teacher, jyotish, numerology calculator, tarot guide, hellenistic astrology, nakshatras, dasha system"/>
+<meta name="author" content="AstroVision AI"/>
+<meta name="robots" content="index, follow"/>
+<link rel="canonical" href="https://astrovision-ai.netlify.app/jyotika.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Jyotika AI – Master Teacher of Esoteric Arts"/>
+<meta property="og:description" content="Learn Vedic astrology, numerology, tarot, and more with Jyotika — your AI master teacher."/>
+<meta property="og:url" content="https://astrovision-ai.netlify.app/jyotika.html"/>
+<link rel="icon" type="image/svg+xml" href="public/favicon.svg"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="jyotika.css"/>
+</head>
+<body>
+<canvas id="stars"></canvas>
+
+<!-- HEADER -->
+<header id="jHeader">
+  <div class="header-inner">
+    <a href="index.html" class="back-home">← AstroVision AI</a>
+    <div class="jy-brand">
+      <div class="jy-avatar-sm">🔮</div>
+      <div>
+        <div class="jy-name">Jyotika AI</div>
+        <div class="jy-status"><span class="status-dot"></span>Master Teacher · Online</div>
+      </div>
+    </div>
+    <div class="header-tools">
+      <button class="tool-btn" id="btnNumerology" title="Numerology Calculator">🔢</button>
+      <button class="tool-btn" id="btnChart" title="Chart Guide">🌌</button>
+      <button class="tool-btn" id="btnTarot" title="Tarot Reference">🃏</button>
+      <button class="tool-btn" id="clearBtn" title="Clear Chat">🗑</button>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN LAYOUT -->
+<div class="jy-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-title">📚 Study Curriculum</div>
+      <div class="topic-list" id="topicList">
+        <div class="topic-item" data-topic="foundations">
+          <span class="topic-icon">🌍</span>
+          <div><div class="topic-name">Phase 0: Foundations</div><div class="topic-sub">Astronomy · Zodiac · Ecliptic</div></div>
+        </div>
+        <div class="topic-item" data-topic="vedic">
+          <span class="topic-icon">🪷</span>
+          <div><div class="topic-name">Phase 1: Vedic Astrology</div><div class="topic-sub">Jyotish · Dashas · Yogas</div></div>
+        </div>
+        <div class="topic-item" data-topic="western">
+          <span class="topic-icon">⭐</span>
+          <div><div class="topic-name">Phase 2: Western Astrology</div><div class="topic-sub">Hellenistic · Transits · Synastry</div></div>
+        </div>
+        <div class="topic-item" data-topic="numerology">
+          <span class="topic-icon">🔢</span>
+          <div><div class="topic-name">Phase 3: Numerology</div><div class="topic-sub">Pythagorean · Chaldean · Kabbalah</div></div>
+        </div>
+        <div class="topic-item" data-topic="tarot">
+          <span class="topic-icon">🃏</span>
+          <div><div class="topic-name">Phase 4: Tarot & Divination</div><div class="topic-sub">Tarot · I Ching · Palmistry</div></div>
+        </div>
+        <div class="topic-item" data-topic="integration">
+          <span class="topic-icon">✨</span>
+          <div><div class="topic-name">Integration</div><div class="topic-sub">Cross-system synthesis</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">⚡ Quick Questions</div>
+      <div class="quick-list" id="quickList">
+        <button class="quick-btn" data-q="Where do I start learning astrology?">Where do I start?</button>
+        <button class="quick-btn" data-q="Explain the 9 planets in Vedic astrology">9 Vedic Planets</button>
+        <button class="quick-btn" data-q="What is the Vimshottari Dasha system?">Vimshottari Dasha</button>
+        <button class="quick-btn" data-q="What are Nakshatras?">27 Nakshatras</button>
+        <button class="quick-btn" data-q="Explain Raja Yoga in Vedic astrology">Raja Yoga</button>
+        <button class="quick-btn" data-q="What is the difference between Vedic and Western astrology?">Vedic vs Western</button>
+        <button class="quick-btn" data-q="How do I calculate my Life Path Number?">Life Path Number</button>
+        <button class="quick-btn" data-q="Explain the 22 Major Arcana cards">Major Arcana</button>
+        <button class="quick-btn" data-q="What is synastry in astrology?">Synastry</button>
+        <button class="quick-btn" data-q="How do Hellenistic time-lord systems work?">Time-Lord Systems</button>
+      </div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">📖 Free Resources</div>
+      <div class="resource-list">
+        <a href="https://www.astro.com" target="_blank" class="resource-link">🌐 Astro.com – Free Charts</a>
+        <a href="https://www.astro-seek.com" target="_blank" class="resource-link">🌐 Astro-Seek.com – Vedic</a>
+        <a href="https://www.sacred-texts.com" target="_blank" class="resource-link">📜 Sacred-Texts.com</a>
+        <a href="https://www.archive.org" target="_blank" class="resource-link">🏛 Archive.org – Books</a>
+        <a href="https://stellarium.org" target="_blank" class="resource-link">🔭 Stellarium Planetarium</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- CHAT AREA -->
+  <main class="chat-main">
+    <div class="chat-messages" id="chatMessages">
+      <!-- Greeting injected by JS -->
+    </div>
+
+    <!-- NUMEROLOGY TOOL PANEL -->
+    <div class="tool-panel" id="numPanel" style="display:none">
+      <div class="panel-header"><span>🔢 Numerology Calculator</span><button class="panel-close" data-close="numPanel">✕</button></div>
+      <div class="panel-body">
+        <div class="panel-grid">
+          <div class="pfg"><label>Full Birth Name (as on birth certificate)</label><input id="numName" placeholder="e.g. Priya Sharma"/></div>
+          <div class="pfg"><label>Date of Birth</label><input type="date" id="numDob"/></div>
+          <div class="pfg"><label>Numerology System</label>
+            <select id="numSystem">
+              <option value="pythagorean">Pythagorean (Western)</option>
+              <option value="chaldean">Chaldean (Ancient)</option>
+            </select>
+          </div>
+          <div class="pfg"><label>Current Year</label><input type="number" id="numYear" value="2026"/></div>
+        </div>
+        <button class="jy-btn" id="calcNumBtn">Calculate Full Profile</button>
+        <div id="numResult" class="num-result" style="display:none"></div>
+      </div>
+    </div>
+
+    <!-- CHART GUIDE PANEL -->
+    <div class="tool-panel" id="chartPanel" style="display:none">
+      <div class="panel-header"><span>🌌 Vedic Chart Quick Reference</span><button class="panel-close" data-close="chartPanel">✕</button></div>
+      <div class="panel-body chart-ref" id="chartRef"></div>
+    </div>
+
+    <!-- TAROT PANEL -->
+    <div class="tool-panel" id="tarotPanel" style="display:none">
+      <div class="panel-header"><span>🃏 Major Arcana Reference</span><button class="panel-close" data-close="tarotPanel">✕</button></div>
+      <div class="panel-body" id="tarotRef"></div>
+    </div>
+
+    <!-- INPUT BAR -->
+    <div class="input-bar">
+      <div class="input-wrap">
+        <textarea id="userInput" placeholder="Ask Jyotika anything about Vedic Astrology, Numerology, Tarot, Palmistry, I Ching..." rows="1"></textarea>
+        <button class="send-btn" id="sendBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+      <div class="input-hint">Jyotika is fluent in Vedic · Western · Hellenistic Astrology · Numerology · Tarot · I Ching · Palmistry</div>
+    </div>
+  </main>
+
+</div>
+
+<script src="jyotika.js"></script>
+</body>
+</html>

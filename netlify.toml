@@ -1,0 +1,53 @@
+# Netlify Configuration
+# =====================
+# Automatically used by Netlify on deployment.
+
+[build]
+  publish = "."
+  command = ""
+
+# ── REDIRECT RULES ──────────────────────────────────────────
+[[redirects]]
+  from = "/jyotika"
+  to = "/jyotika.html"
+  status = 200
+
+[[redirects]]
+  from = "/app"
+  to = "/index.html"
+  status = 200
+
+# ── CUSTOM HEADERS ──────────────────────────────────────────
+
+# Security headers for all pages
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Long cache for static assets
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+# ── ENVIRONMENT ─────────────────────────────────────────────
+[context.production.environment]
+  NODE_ENV = "production"
+
+[context.deploy-preview.environment]
+  NODE_ENV = "staging"
