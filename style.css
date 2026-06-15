@@ -354,3 +354,23 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:60px 24p
 .jyw-textarea:focus{border-color:#9b6dff;background:rgba(155,109,255,.06)}
 .jyw-send{background:linear-gradient(135deg,#9b6dff,#6b3fa0);border:none;border-radius:10px;width:38px;height:38px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#fff;transition:.2s;flex-shrink:0}
 .jyw-send:hover{transform:scale(1.08);box-shadow:0 4px 16px rgba(155,109,255,.5)}
+
+/* ═══ TAROT CARD DISPLAY (drawn cards) ══════════════════ */
+.tarot-cards-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.tarot-card-item{flex:1;min-width:130px;max-width:160px;text-align:center}
+.tarot-pos{font-size:.72rem;color:var(--teal);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+.tarot-card-face{background:linear-gradient(145deg,rgba(155,109,255,.15),rgba(64,224,200,.07));border:2px solid rgba(155,109,255,.35);border-radius:14px;padding:20px 12px;margin-bottom:10px;cursor:default;transition:.2s}
+.tarot-card-face:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(155,109,255,.3)}
+.tarot-card-num{font-size:.72rem;color:var(--gold);font-weight:700;margin-bottom:6px;opacity:.8}
+.tarot-card-emoji{font-size:2.2rem;margin-bottom:8px;display:block}
+.tarot-card-name{font-size:.85rem;font-weight:700;color:var(--text);margin-bottom:0}
+.tarot-card-meaning{font-size:.73rem;color:var(--muted);line-height:1.6}
+
+/* ═══ PREDICTION RESULT ══════════════════════════════════ */
+.pred-event{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--border)}
+.pred-event:last-of-type{border-bottom:none}
+.pred-event-time{font-size:.72rem;color:var(--teal);font-weight:700;min-width:110px;padding-top:2px;line-height:1.4}
+.pred-event-body h5{font-size:.9rem;color:var(--text);margin:0 0 6px;font-weight:700}
+.pred-event-body p{font-size:.82rem;color:var(--muted);margin:0;line-height:1.65}
+.pred-advice-box{background:linear-gradient(135deg,rgba(155,109,255,.08),rgba(64,224,200,.05));border:1px solid rgba(155,109,255,.2);border-radius:12px;padding:16px;margin-top:20px;font-size:.83rem;line-height:1.75;color:var(--text)}
+.pred-advice-box strong{color:var(--gold)}
