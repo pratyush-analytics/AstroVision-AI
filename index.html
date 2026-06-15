@@ -3,27 +3,14 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>AstroVision AI – Your Cosmic Destiny | AI Astrology Platform</title>
-<meta name="description" content="AI-powered Vedic and Western astrology. Get personalized birth charts, daily horoscopes, compatibility analysis, tarot readings, and future predictions. Free online astrology."/>
-<meta name="keywords" content="astrology, birth chart, horoscope, vedic astrology, western astrology, tarot, numerology, AI astrology, zodiac, jyotish"/>
-<meta name="author" content="AstroVision AI"/>
-<meta name="robots" content="index, follow"/>
-<link rel="canonical" href="https://astrovision-ai.netlify.app/"/>
-<!-- Open Graph (Facebook, LinkedIn, WhatsApp) -->
+<title>CosmoSage AI – Your Cosmic Intelligence | Astrology · Numerology · Jyotika AI</title>
+<meta name="description" content="CosmoSage AI — AI-powered Vedic & Western astrology, birth charts, horoscopes, tarot, compatibility, and Jyotika, your personal AI master teacher of esoteric arts."/>
+<meta name="keywords" content="astrology AI, vedic astrology, birth chart, horoscope, jyotika, numerology, tarot, cosmic AI"/>
+<meta name="author" content="CosmoSage AI"/>
+<meta property="og:title" content="CosmoSage AI — Where Ancient Wisdom Meets Cosmic Intelligence"/>
+<meta property="og:description" content="AI-powered astrology, numerology, tarot readings and Jyotika AI — your personal master teacher of esoteric arts."/>
 <meta property="og:type" content="website"/>
-<meta property="og:url" content="https://astrovision-ai.netlify.app/"/>
-<meta property="og:title" content="AstroVision AI – Unlock Your Cosmic Destiny"/>
-<meta property="og:description" content="AI-powered astrology: birth charts, daily horoscopes, compatibility, tarot, and future predictions. Ancient wisdom meets artificial intelligence."/>
-<meta property="og:image" content="https://astrovision-ai.netlify.app/public/og-image.png"/>
-<meta property="og:site_name" content="AstroVision AI"/>
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="AstroVision AI – Your Cosmic Destiny"/>
-<meta name="twitter:description" content="AI-powered astrology platform. Free birth charts, horoscopes, compatibility & tarot."/>
-<meta name="twitter:image" content="https://astrovision-ai.netlify.app/public/og-image.png"/>
-<!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="public/favicon.svg"/>
-<!-- Preconnect for Google Fonts performance -->
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
@@ -35,7 +22,7 @@
 <!-- NAV -->
 <nav id="nav">
   <div class="nav-inner">
-    <div class="logo">✦ AstroVision <span>AI</span></div>
+    <div class="logo">✦ CosmoSage <span>AI</span></div>
     <ul>
       <li><a href="#horoscope">Horoscope</a></li>
       <li><a href="#birthchart">Birth Chart</a></li>
@@ -43,7 +30,10 @@
       <li><a href="#predictions">Predictions</a></li>
       <li><a href="#tarot">Tarot</a></li>
     </ul>
-    <button class="btn-primary" onclick="scrollTo('#birthchart')">Get Started ✦</button>
+    <div class="nav-actions">
+      <button class="btn-jyotika" id="navJyotikaBtn">🔮 Ask Jyotika</button>
+      <button class="btn-primary" onclick="document.getElementById('birthchart').scrollIntoView({behavior:'smooth'})">Get Started ✦</button>
+    </div>
   </div>
 </nav>
 
@@ -51,16 +41,16 @@
 <section id="hero">
   <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
   <div class="hero-text">
-    <div class="badge">✦ AI-Powered Astrology Platform</div>
+    <div class="badge">✦ AI-Powered Cosmic Intelligence Platform</div>
     <h1>Unlock Your<br/><span class="g-text">Cosmic Destiny</span></h1>
-    <p>Harness ancient star wisdom with modern AI. Get personalized birth charts, daily horoscopes, and future event predictions crafted uniquely for your cosmic blueprint.</p>
+    <p>Harness ancient star wisdom with modern AI. Get personalized birth charts, daily horoscopes, future event predictions, and learn directly from <strong>Jyotika</strong> — your AI master teacher of the esoteric arts.</p>
     <div class="hero-btns">
       <button class="btn-primary" onclick="document.getElementById('birthchart').scrollIntoView({behavior:'smooth'})">Reveal My Chart ✦</button>
-      <button class="btn-ghost" onclick="document.getElementById('horoscope').scrollIntoView({behavior:'smooth'})">Daily Horoscope</button>
+      <button class="btn-ghost" id="heroJyotikaBtn">🔮 Chat with Jyotika</button>
     </div>
     <div class="stats">
       <div><strong>2.4M+</strong><span>Readings</span></div>
-      <div><strong>98%</strong><span>Accuracy</span></div>
+      <div><strong>16</strong><span>Knowledge Domains</span></div>
       <div><strong>150+</strong><span>Countries</span></div>
     </div>
   </div>
@@ -246,8 +236,55 @@
   </div>
 </section>
 
+<!-- JYOTIKA AI FEATURE SECTION -->
+<section id="jyotika-feature" class="section alt-bg">
+  <div class="s-header">
+    <div class="badge">🔮 Jyotika AI — Master Teacher</div>
+    <h2>Learn from <span class="g-text">Ancient Wisdom</span></h2>
+    <p>Jyotika is your personal AI teacher — deeply versed in classical texts, ready to guide you through every layer of esoteric knowledge</p>
+  </div>
+  <div class="jy-feature-grid">
+    <div class="jy-feat-card" onclick="openJyotikaWidget('Explain the 9 planets in Vedic astrology')">
+      <div class="jy-feat-icon">🪷</div>
+      <h4>Vedic Jyotish</h4>
+      <p>Nava Grahas, Nakshatras, Vimshottari Dasha, Yogas, Navamsa — from BPHS and Saravali</p>
+      <span class="jy-feat-link">Ask Jyotika →</span>
+    </div>
+    <div class="jy-feat-card" onclick="openJyotikaWidget('Explain Hellenistic astrology — Ptolemy, Vettius Valens, profections')">
+      <div class="jy-feat-icon">⭐</div>
+      <h4>Hellenistic Astrology</h4>
+      <p>Ptolemy's Tetrabiblos, Vettius Valens, Zodiacal Releasing, Sect, Lots, Profections</p>
+      <span class="jy-feat-link">Ask Jyotika →</span>
+    </div>
+    <div class="jy-feat-card" onclick="openJyotikaWidget('How do I calculate my Life Path Number?')">
+      <div class="jy-feat-icon">🔢</div>
+      <h4>Numerology</h4>
+      <p>Pythagorean & Chaldean systems, Life Path, Expression, Soul Urge, Personal Year cycles</p>
+      <span class="jy-feat-link">Calculate Now →</span>
+    </div>
+    <div class="jy-feat-card" onclick="openJyotikaWidget('Explain the 22 Major Arcana cards of Tarot')">
+      <div class="jy-feat-icon">🃏</div>
+      <h4>Tarot & Divination</h4>
+      <p>78-card Tarot system, I Ching hexagrams, Palmistry — all traditions integrated</p>
+      <span class="jy-feat-link">Ask Jyotika →</span>
+    </div>
+    <div class="jy-feat-card" onclick="openJyotikaWidget('How do I integrate Vedic astrology, numerology, and Tarot into one unified reading?')">
+      <div class="jy-feat-icon">✨</div>
+      <h4>Cross-System Integration</h4>
+      <p>Synthesize Vedic Dasha, Western transits, Personal Year cycles and Tarot Birth Cards</p>
+      <span class="jy-feat-link">Ask Jyotika →</span>
+    </div>
+    <div class="jy-feat-card jy-feat-cta" onclick="openJyotikaWidget('')">
+      <div class="jy-feat-icon">🔮</div>
+      <h4>Open Full Chat</h4>
+      <p>Ask Jyotika anything — she knows the complete classical canon of esoteric wisdom</p>
+      <button class="btn-primary" style="margin-top:12px">Open Jyotika AI ✦</button>
+    </div>
+  </div>
+</section>
+
 <!-- FEATURES -->
-<section id="features" class="section alt-bg">
+<section id="features" class="section">
   <div class="s-header">
     <div class="badge">Platform Features</div>
     <h2>Everything You Need to <span class="g-text">Know Your Future</span></h2>
@@ -265,7 +302,7 @@
 </section>
 
 <!-- TESTIMONIALS -->
-<section id="testimonials" class="section">
+<section id="testimonials" class="section alt-bg">
   <div class="s-header">
     <div class="badge">User Stories</div>
     <h2>What the Stars <span class="g-text">Revealed for Them</span></h2>
@@ -277,17 +314,103 @@
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="logo">✦ AstroVision <span>AI</span></div>
-      <p>Cosmic wisdom meets artificial intelligence. Unlock your destiny with the most advanced AI astrology platform.</p>
+      <div class="logo">✦ CosmoSage <span>AI</span></div>
+      <p>Where ancient wisdom meets artificial intelligence. Your complete cosmic intelligence platform — astrology, numerology, tarot, and Jyotika AI.</p>
     </div>
     <div class="footer-links">
       <div><h5>Features</h5><a href="#horoscope">Daily Horoscope</a><a href="#birthchart">Birth Chart</a><a href="#compatibility">Compatibility</a><a href="#predictions">AI Predictions</a><a href="#tarot">Tarot</a></div>
-      <div><h5>Astrology</h5><a href="#">Western</a><a href="#">Vedic</a><a href="#">Chinese</a><a href="#">Numerology</a><a href="#">Palmistry</a></div>
+      <div><h5>Jyotika AI</h5><a href="#jyotika-feature">Vedic Astrology</a><a href="#jyotika-feature">Numerology</a><a href="#jyotika-feature">Tarot Guide</a><a href="#jyotika-feature">I Ching</a><a href="#jyotika-feature">Palmistry</a></div>
       <div><h5>Company</h5><a href="#">About Us</a><a href="#">Our Astrologers</a><a href="#">Blog</a><a href="#">Privacy Policy</a><a href="#">Terms</a></div>
     </div>
   </div>
-  <div class="footer-bottom">© 2026 AstroVision AI. All Rights Reserved. Made with ✦ and cosmic energy.</div>
+  <div class="footer-bottom">© 2026 CosmoSage AI. All Rights Reserved. Made with ✦ and cosmic energy.</div>
 </footer>
+
+<!-- ═══════════════════════════════════════════════════
+     JYOTIKA AI — FLOATING WIDGET (Built into main page)
+     ═══════════════════════════════════════════════════ -->
+
+<!-- Floating Toggle Button -->
+<button class="jyw-toggle" id="jywToggle" aria-label="Open Jyotika AI">
+  <span class="jyw-toggle-icon">🔮</span>
+  <span class="jyw-toggle-label">Ask Jyotika</span>
+  <span class="jyw-pulse"></span>
+</button>
+
+<!-- Full Chat Panel -->
+<div class="jyw-panel" id="jywPanel" aria-hidden="true">
+
+  <!-- Header -->
+  <div class="jyw-header">
+    <div class="jyw-header-left">
+      <div class="jyw-avatar">🔮</div>
+      <div>
+        <div class="jyw-name">Jyotika AI</div>
+        <div class="jyw-status"><span class="jyw-dot"></span>Master Teacher · Online</div>
+      </div>
+    </div>
+    <div class="jyw-header-right">
+      <button class="jyw-tool-btn" id="jywBtnNum" title="Numerology Calculator">🔢</button>
+      <button class="jyw-tool-btn" id="jywBtnChart" title="Chart Reference">🌌</button>
+      <button class="jyw-tool-btn" id="jywBtnTarot" title="Tarot Reference">🃏</button>
+      <button class="jyw-clear-btn" id="jywClear" title="Clear chat">🗑</button>
+      <button class="jyw-close" id="jywClose" title="Close">✕</button>
+    </div>
+  </div>
+
+  <!-- Numerology Tool Panel -->
+  <div class="jyw-tool-panel" id="jywNumPanel" style="display:none">
+    <div class="jyw-tp-head"><span>🔢 Numerology Calculator</span><button class="jyw-tp-close" data-panel="jywNumPanel">✕</button></div>
+    <div class="jyw-tp-body">
+      <input class="jyw-field" id="jywNumName" placeholder="Full birth name (as on birth certificate)"/>
+      <input class="jyw-field" type="date" id="jywNumDob"/>
+      <select class="jyw-field" id="jywNumSys">
+        <option value="pythagorean">Pythagorean (Western)</option>
+        <option value="chaldean">Chaldean (Ancient)</option>
+      </select>
+      <input class="jyw-field" type="number" id="jywNumYear" value="2026" placeholder="Current year"/>
+      <button class="jyw-calc-btn" id="jywCalcBtn">✦ Calculate Full Profile</button>
+      <div id="jywNumResult" class="jyw-num-result" style="display:none"></div>
+    </div>
+  </div>
+
+  <!-- Chart Reference Panel -->
+  <div class="jyw-tool-panel" id="jywChartPanel" style="display:none">
+    <div class="jyw-tp-head"><span>🌌 Vedic House Reference</span><button class="jyw-tp-close" data-panel="jywChartPanel">✕</button></div>
+    <div class="jyw-tp-body" id="jywChartRef"></div>
+  </div>
+
+  <!-- Tarot Reference Panel -->
+  <div class="jyw-tool-panel" id="jywTarotPanel" style="display:none">
+    <div class="jyw-tp-head"><span>🃏 Major Arcana Reference</span><button class="jyw-tp-close" data-panel="jywTarotPanel">✕</button></div>
+    <div class="jyw-tp-body" id="jywTarotRef"></div>
+  </div>
+
+  <!-- Quick Topic Pills -->
+  <div class="jyw-quick-bar" id="jywQuickBar">
+    <button class="jyw-quick" data-q="Where do I start learning astrology?">Where to start?</button>
+    <button class="jyw-quick" data-q="Explain the 9 planets in Vedic astrology">9 Vedic Planets</button>
+    <button class="jyw-quick" data-q="What is the Vimshottari Dasha system?">Vimshottari Dasha</button>
+    <button class="jyw-quick" data-q="What are Nakshatras?">27 Nakshatras</button>
+    <button class="jyw-quick" data-q="Explain Raja Yoga in Vedic astrology">Raja Yoga</button>
+    <button class="jyw-quick" data-q="How do I calculate my Life Path Number?">Life Path</button>
+    <button class="jyw-quick" data-q="Explain the 22 Major Arcana cards">Tarot Arcana</button>
+    <button class="jyw-quick" data-q="What is the difference between Vedic and Western astrology?">Vedic vs Western</button>
+    <button class="jyw-quick" data-q="What is the I Ching?">I Ching</button>
+    <button class="jyw-quick" data-q="How to read palm lines?">Palmistry</button>
+  </div>
+
+  <!-- Chat Messages Area -->
+  <div class="jyw-messages" id="jywMessages"></div>
+
+  <!-- Input Bar -->
+  <div class="jyw-input-bar">
+    <textarea id="jywInput" class="jyw-textarea" placeholder="Ask Jyotika about Vedic astrology, numerology, tarot, palmistry..." rows="1"></textarea>
+    <button class="jyw-send" id="jywSend">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
 
 <script src="app.js"></script>
 </body>
